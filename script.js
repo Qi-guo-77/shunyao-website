@@ -16,6 +16,12 @@ links.querySelectorAll('a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('.product-tabs a').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
+});
+
 function handleSubmit(event) {
   event.preventDefault();
   const note = document.querySelector('#formNote');

@@ -196,12 +196,14 @@
             <p><strong>公司地址：</strong>成都市郫都区天骄路555号3栋3单元3楼301-2</p>
           </div>
         </div>
-        <form class="contact-form" onsubmit="return handleSubmit(event)">
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return handleSubmit(event)">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>请勿填写<input name="bot-field"></label></p>
           <label>姓名<input type="text" name="name" placeholder="请输入您的姓名" required></label>
           <label>电话<input type="tel" name="phone" placeholder="请输入联系电话" required></label>
           <label>需求<textarea name="message" rows="5" placeholder="请简要描述项目需求"></textarea></label>
           <button class="btn primary" type="submit">提交需求</button>
-          <p class="form-note" id="formNote">表单为前端演示，正式上线可接入邮箱、CRM 或服务器接口。</p>
+          <p class="form-note" id="formNote">提交后我们会尽快与您联系。</p>
         </form>
       </div>
     </section>

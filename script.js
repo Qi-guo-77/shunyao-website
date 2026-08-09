@@ -22,10 +22,32 @@ document.querySelectorAll('.product-tabs a').forEach((tab) => {
   });
 });
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
   const note = document.querySelector('#formNote');
-  note.textContent = '已收到您的填写示例。正式上线时可接入后端接口或邮箱发送功能。';
-  event.target.reset();
+  const form = event.target;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const formData = new URLSearchParams(new FormData(form));
+
+  note.textContent = '正在提交，请稍候...';
+  submitButton.disabled = true;
+
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString()
+    });
+
+    if (!response.ok) throw new Error('Form submission failed');
+
+    note.textContent = '提交成功，我们会尽快与您联系。';
+    form.reset();
+  } catch (error) {
+    note.textContent = '自动提交暂时不可用，请直接发送需求至 chengdushunyao@163.com。';
+  } finally {
+    submitButton.disabled = false;
+  }
+
   return false;
 }

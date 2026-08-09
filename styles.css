@@ -435,6 +435,14 @@ a{color:inherit;text-decoration:none}
   gap:42px;
   align-items:start;
 }
+.catalog-section#shape .catalog-layout{
+  align-items:stretch;
+}
+.shape-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
 .catalog-copy{
   display:grid;
   gap:16px;
@@ -466,12 +474,36 @@ a{color:inherit;text-decoration:none}
 .series-shape-cards{
   grid-template-columns:repeat(2,minmax(0,1fr));
   align-items:stretch;
+  margin-top:auto;
 }
 .series-shape-cards .catalog-card{
   aspect-ratio:1/1;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
+}
+.series-shape-cards.one{
+  grid-template-columns:1fr;
+}
+.series-shape-cards.one .catalog-card{
+  aspect-ratio:auto;
+  min-height:180px;
+}
+.series-shape-cards.two{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.series-shape-cards.three{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.series-shape-cards.three .catalog-card{
+  padding:18px;
+}
+.series-shape-cards.three .catalog-card h3{
+  font-size:18px;
+}
+.series-shape-cards.three .catalog-card p{
+  font-size:14px;
+  line-height:1.75;
 }
 .shape-showcase,
 .graph-placeholder{
@@ -515,6 +547,14 @@ a{color:inherit;text-decoration:none}
   gap:22px;
   width:100%;
 }
+.product-photo-pair.single{
+  grid-template-columns:1fr;
+  max-width:460px;
+}
+.product-photo-pair.trio{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
 .product-photo-pair figure{
   margin:0;
   display:grid;
@@ -526,6 +566,9 @@ a{color:inherit;text-decoration:none}
   max-height:280px;
   object-fit:contain;
   filter:drop-shadow(0 28px 34px rgba(0,0,0,.42));
+}
+.product-photo-pair.trio img{
+  max-height:210px;
 }
 .product-photo-pair figcaption{
   color:rgba(255,255,255,.8);
